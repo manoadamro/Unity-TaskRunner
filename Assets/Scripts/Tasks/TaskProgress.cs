@@ -10,5 +10,7 @@ namespace Tasks
             Description = description;
             Progress = progress;
         }
+        
+        public static TaskProgress Done => new TaskProgress("done!", 1f);
     }
 }

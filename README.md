@@ -61,10 +61,9 @@ private string MyTask(int maximum, out TaskProgress progress)
             $"Counted to {i + 1} of {maximum}",
             (i + 1f) / maximum);
 
-    progress = new TaskProgress("Done!", 1f);
+    progress = TaskProgress.Done;
     return $"Counted to {countTo}!";
 }
-
 ```
 
 
