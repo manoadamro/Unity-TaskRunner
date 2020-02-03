@@ -6,9 +6,11 @@ Running long tasks in Unity can be fiddly, since a lot of Unity can not be acces
 Unity-TaskRunner makes stuff like this easier.
 
 
+---
+
 ### Creating a Task
 
-```
+```csharp
 var task = new TaskData<int, string>
 {
     Title = $"Count to {countTo}",
@@ -21,12 +23,12 @@ var task = new TaskData<int, string>
 ```
 
 
-##### Title
+#### Title
 
 String to display in the progress bar
 
 
-##### Action and Args
+#### Action and Args
 
 Task methods must follow one of the following patterns:
 
@@ -43,7 +45,7 @@ The task can set the progress variable as and when it needs to.
 This progress report will be available to other threads.
 
 Eg:
-```
+```csharp
 private string MyTask(int maximum, out TaskProgress progress)
 {
     for (var i = 0; i < maximum; i++)
@@ -62,7 +64,7 @@ Args (Arg1, Arg2, etc...) must also be populated in the initialiser.
 
 
 
-##### Progress
+#### Progress
 
 
 Inside a task method, the progress can be reported. 
@@ -74,7 +76,7 @@ Eg: `progress = new TaskProgress($"Counted to {i + 1} of {maximum}", (i + 1f) / 
 
 
 
-##### Callback and Join
+#### Callback and Join
 
 A method taking a single parameter (`TReturn` from Action)
 
@@ -87,7 +89,7 @@ If join is `false`, the callback is called from the thread and the Unity API is 
 
 
 Eg:
-```
+```csharp
 private void OnTaskComplete(string outcome) => Debug.Log(outcome);
 ```
 
@@ -98,7 +100,7 @@ private void OnTaskComplete(string outcome) => Debug.Log(outcome);
 ### Running a Task
 
 
-```
+```csharp
 var taskRunner = GetComponent<TaskRunner>();
 
 var task = new TaskData<int, string>
