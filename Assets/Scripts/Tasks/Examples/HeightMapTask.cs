@@ -40,7 +40,7 @@ namespace Tasks.Examples
                     counter / total);
             }
 
-            progress = new TaskProgress("Done!", 1f);
+            progress = TaskProgress.Done;
             return heightMap;
         }
     }

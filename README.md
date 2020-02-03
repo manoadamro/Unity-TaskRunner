@@ -9,6 +9,11 @@ Running long tasks in Unity can be fiddly, since a lot of Unity can not be acces
 Unity-TaskRunner makes stuff like this easier.
 
 
+[See Examples](./Assets/Scripts/Tasks/Examples)
+
+[Download Unity Package](https://github.com/manoadamro/Unity-TaskRunner/releases)
+
+
 ---
 
 ### Creating a Task
@@ -56,10 +61,9 @@ private string MyTask(int maximum, out TaskProgress progress)
             $"Counted to {i + 1} of {maximum}",
             (i + 1f) / maximum);
 
-    progress = new TaskProgress("Done!", 1f);
+    progress = TaskProgress.Done;
     return $"Counted to {countTo}!";
 }
-
 ```
 
 
