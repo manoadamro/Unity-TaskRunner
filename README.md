@@ -8,8 +8,10 @@ Run threaded tasks in unity.
 Running long tasks in Unity can be fiddly, since a lot of Unity can not be accessed from outside the main thread.
 Unity-TaskRunner makes stuff like this easier.
 
-[Download Unity Package](https://github.com/manoadamro/Unity-TaskRunner/releases)
+
 [See Examples](./Assets/Scripts/Tasks/Examples)
+
+[Download Unity Package](https://github.com/manoadamro/Unity-TaskRunner/releases)
 
 
 ---
