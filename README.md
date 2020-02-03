@@ -125,7 +125,9 @@ taskRunner.RunTask(task);
 #### Running In Editor
 
 
-TODO
+![Running Task](./Docs/Running-Task.png)
+
+![Completed Task](./Docs/Task-Complete.png)
 
 
 #### Running In Play Mode
