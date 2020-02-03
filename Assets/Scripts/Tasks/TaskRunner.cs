@@ -13,14 +13,12 @@ namespace Tasks
         public bool Busy => CurrentTask != null;
 
         private List<TaskJoinData> PendingJoinTasks { get; } = new List<TaskJoinData>();
+        
+        private List<TaskData> QueuedTasks { get; } = new List<TaskData>();
 
-        public void RunTask(TaskData task)
-        {
-            if (Busy) throw new Exception(); // TODO
-            CurrentTask = task;
-            var thread = new Thread(TaskThread);
-            thread.Start();
-        }
+        public int QueueCount => QueuedTasks.Count;
+        
+        public void RunTask(TaskData task) => QueuedTasks.Add(task);
 
         private void TaskThread()
         {
@@ -53,6 +51,21 @@ namespace Tasks
             }
         }
 
-        public void Update() => ProcessPendingJoins();
+        private void ProcessNextQueuedTask()
+        {
+            if(Busy || QueuedTasks.Count == 0) return;
+            var task = QueuedTasks[0];
+            QueuedTasks.Remove(task);
+            
+            CurrentTask = task;
+            var thread = new Thread(TaskThread);
+            thread.Start();
+        }
+
+        public void Update()
+        {
+            ProcessPendingJoins();
+            ProcessNextQueuedTask();
+        }
     }
 }

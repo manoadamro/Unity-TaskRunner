@@ -23,7 +23,7 @@ namespace Tasks.Examples
 
         private void OnTaskComplete(float[,] heightMap) => Debug.Log($"Completed Heightmap: {heightMap}");
 
-        // TODO do something with heightmap
+
         private float[,] MyTask(Vector2Int mapSize, out TaskProgress progress)
         {
             var heightMap = new float[mapSize.x, mapSize.y];

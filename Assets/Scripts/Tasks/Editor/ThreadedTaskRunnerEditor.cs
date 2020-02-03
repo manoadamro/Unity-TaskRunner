@@ -1,10 +1,14 @@
 using UnityEditor;
+using UnityEngine;
 
 namespace Tasks.Editor
 {
     [CustomEditor(typeof(TaskRunner))]
     public class ThreadedTaskRunnerEditor : UnityEditor.Editor
     {
+        private bool _showQueuedTasks;
+        private bool _showPendingJoinTasks;
+        
         public override void OnInspectorGUI()
         {
             var runner = (TaskRunner) target;
@@ -24,6 +28,10 @@ namespace Tasks.Editor
             EditorGUILayout.LabelField($"{description}", EditorStyles.label);
             EditorGUI.indentLevel--;
             EditorGUILayout.EndVertical();
+            
+            EditorGUILayout.Space();
+
+            EditorGUILayout.LabelField($"Queued Tasks {runner.QueueCount}");
 
             if (runner.Busy)
             {
