@@ -2,6 +2,9 @@
 Run threaded tasks in unity.
 
 
+![Running Task](./Docs/Running-Task.png)
+
+
 Running long tasks in Unity can be fiddly, since a lot of Unity can not be accessed from outside the main thread.
 Unity-TaskRunner makes stuff like this easier.
 
